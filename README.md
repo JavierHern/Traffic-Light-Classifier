@@ -1,55 +1,59 @@
 # Traffic-Light-Classifier
-In this project, I used my knowledge of computer vision techniques to build a classifier for images of traffic lights.
 
-Traffic-Light-Classifier
 In this project , Traffic lights have been classified (Red, Yellow , Green) using Computer Vision fundamentals.
 
-Installing Dependencies
-opencv - pip install opencv-python 
-Data
+# Installing Dependencies
+* opencv - `pip install opencv-python`
+# Data
 Data is compressed and uploaded
 
-Sample from the data
-sample
+# Sample from the data
+<img width="623" alt="all_lights" src="https://github.com/JavierHern/Traffic-Light-Classifier/assets/83629940/f15610c3-1232-401a-be4f-6db81e62fd9d">
 
-Classification Steps
-Loading and Visualizing the Traffic Light Dataset
 
-This traffic light dataset consists of 1484 number of color images in 3 categories - red, yellow, and green. As with most human-sourced data, the data is not evenly distributed among the types. There are:
 
-904 red traffic light images
-536 green traffic light images
-44 yellow traffic light images
-Note: All images come from this MIT self-driving car course and are licensed under a 9Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
+# Classification Steps
+* **Loading and Visualizing the Traffic Light Dataset**
 
-Pre-process the Data
+  This traffic light dataset consists of 1484 number of color images in 3 categories - red, yellow, and green. As with most human-sourced data, the data is not evenly distributed among the types. There are:
 
-After loading in each image, you have to standardize the input and output!
+  * 904 red traffic light images
+  * 536 green traffic light images
+  * 44 yellow traffic light images
+Note: All images come from this [MIT self-driving car course](https://selfdrivingcars.mit.edu/) and are licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
 
-Input
+* **Pre-process the Data**
 
-This means that every input image should be in the same format, of the same size, and so on. We'll be creating features by performing the same analysis on every picture, and for a classification task like this, it's important that similar images create similar features!
+  After loading in each image, you have to standardize the input and output!
 
-Output
+  **Input**
 
-We also need the output to be a label that is easy to read and easy to compare with other labels. It is good practice to convert categorical data like "red" and "green" to numerical data.
+  This means that every input image should be in the same format, of the same size, and so on. We'll be creating features by performing the same analysis on every picture, and for a classification task like this, it's important that similar images create similar features!
 
-For labels we use one-hot encoding . A red light should have the label: 1, 0, 0. Yellow should be: 0, 1, 0. Green should be: 0, 0, 1. These labels are called one-hot encoded labels.
+  **Output**
 
-Visualize the standardized data
+  We also need the output to be a label that is easy to read and easy to compare with other labels. It is good practice to convert categorical data like "red" and "green" to numerical data.
 
-Display a standardized image from STANDARDIZED_LIST and compare it with a non-standardized image from IMAGE_LIST.
+  For labels we use one-hot encoding . A red light should have the label: 1, 0, 0. Yellow should be: 0, 1, 0. Green should be: 0, 0, 1. These labels are called one-hot encoded labels.
 
-Feature Extraction
+* **Visualize the standardized data**
 
-Now we use opencv library to convert images to HSV color space and extract features from it . We will be masking parts of image too
+  Display a standardized image from STANDARDIZED_LIST and compare it with a non-standardized image from IMAGE_LIST.
 
-Displaying Histogram of different Images
+* **Feature Extraction**
 
-In this approach we understand what happens to V-channel of HSV color space when masked with all 3 (red , yellow , green ) masks (on upper, mid, lower).
+  Now we use opencv library to convert images to HSV color space and extract features from it . We will be masking parts of image too
 
-V-channel is responsible for brightness in the image , which means Histogram of V- channel if compared to red , green ,yellow masks on same image , will spike only on the correct mask . for green light - Histogram of v channel of only green mask will spike
+  * Displaying Histogram of different Images
 
-Classification and Visualizing Error
+    In this approach we understand what happens to V-channel of HSV color space when masked with all 3 (red , yellow , green ) masks (on upper, mid, lower).
 
-Accuracy of this model currently is at 95%, which can be improved to 99%. Further more this approach is only to understand how v-channel works .
+    V-channel is responsible for brightness in the image , which means Histogram of V- channel if compared to red , green ,yellow masks on same image , will spike only on the correct mask . for green light - Histogram of v channel of only green mask will spike
+
+* **Classification and Visualizing Error**
+
+  Accuracy of this model currently is at 95%, which can be improved to 99%. Further more this approach is only to understand how v-channel works .
+
+  In this situation the algorithm developed has achieved 97% of accuracy with the actual image dataset.
+
+  ![Screenshot 2024-01-10 at 5 47 23 p m](https://github.com/JavierHern/Traffic-Light-Classifier/assets/83629940/d0498c8f-9998-48a8-958b-ede944024bb4)
